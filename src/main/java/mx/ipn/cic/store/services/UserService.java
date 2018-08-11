@@ -24,13 +24,13 @@ public class UserService {
 		return this.userRepository.save(user);
 	}
 
-	public boolean delete(Integer id)
+	public boolean delete(String id)
 	{
 		this.userRepository.deleteById(id);
 		return true;
 	}
 
-	public UserEntity findById(Integer id)
+	public UserEntity findById(String id)
 	{
 		Optional<UserEntity> user = this.userRepository.findById(id);
 		if(user.isPresent()) {

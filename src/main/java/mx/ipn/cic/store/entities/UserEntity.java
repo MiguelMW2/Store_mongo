@@ -1,11 +1,12 @@
 package mx.ipn.cic.store.entities;
 
-@Entity
-@Table(name="users")
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="user")
 public class UserEntity {
 
 	@Id
-	/*@GeneratedValue(strategy=GenerationType.IDENTITY)*/
 	private String id;
 
 	private String name;
@@ -31,7 +32,7 @@ public class UserEntity {
 		this.clientId = clientId;
 	}
 
-	public UserEntity(Integer id, String name, String lastname, String givenName, String address, String clientId) {
+	public UserEntity(String id, String name, String lastname, String givenName, String address, String clientId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -41,11 +42,11 @@ public class UserEntity {
 		this.clientId = clientId;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

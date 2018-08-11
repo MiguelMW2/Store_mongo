@@ -44,7 +44,7 @@ public class UserController {
 	}
 
 	@GetMapping(path="/edit/{id}")
-	public ModelAndView edit(@PathVariable(name="id") Integer id) {
+	public ModelAndView edit(@PathVariable(name="id") String id) {
 		UserEntity found = this.userService.findById(id);
 		ModelAndView mav = new ModelAndView("user/form");
 		mav.addObject("user", found);
@@ -52,7 +52,7 @@ public class UserController {
 	}
 
 	@GetMapping(path="/delete/{id}")
-	public String delete(@PathVariable(name="id") Integer id) {
+	public String delete(@PathVariable(name="id") String id) {
 		this.userService.delete(id);
 		return "redirect:/user/all";
 	}

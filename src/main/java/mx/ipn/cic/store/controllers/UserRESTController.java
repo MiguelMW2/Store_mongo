@@ -33,7 +33,7 @@ public class UserRESTController {
 	}
 
 	@GetMapping(path="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<UserEntity> byId(@PathVariable(name="id") Integer id) {
+	public ResponseEntity<UserEntity> byId(@PathVariable(name="id") String id) {
 		UserEntity user = this.userService.findById(id);
 		if (user != null) {
 			return new ResponseEntity<UserEntity>(user, HttpStatus.OK);
@@ -54,7 +54,7 @@ public class UserRESTController {
 	}
 
 	@DeleteMapping(path="/delete/{id}")
-	public ResponseEntity<Boolean> delete(@PathVariable(name="id") Integer id) {
+	public ResponseEntity<Boolean> delete(@PathVariable(name="id") String id) {
 		ResponseEntity<Boolean> response;
 		try {
 			boolean deleted = this.userService.delete(id);
@@ -68,7 +68,7 @@ public class UserRESTController {
 	@PutMapping(path="/save/{id}", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserEntity> edit(
 			@RequestBody UserEntity user,
-			@PathVariable(name="id") Integer id) {
+			@PathVariable(name="id") String id) {
 		user.setId(id);
 		ResponseEntity<UserEntity> response;
 		try {
